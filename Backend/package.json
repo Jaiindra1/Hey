@@ -1,0 +1,16 @@
+{
+  "name": "traffic-control-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Traffic management API backend for DSO-1",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js",
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2"
+  }
+}

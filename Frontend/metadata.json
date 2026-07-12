@@ -1,0 +1,6 @@
+{
+  "name": "Synthetics Command",
+  "description": "Interactive AI-powered traffic management dashboard visualizing live traffic flows, anomalies, predictive routing, and emergency green corridors.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
