@@ -8,12 +8,22 @@ import { emergencyRouter } from './routes/emergency.js';
 export function createApp() {
   seedDatabase();
   const app = express();
+  const allowedOrigins = new Set(
+    (process.env.CLIENT_ORIGINS ?? process.env.CLIENT_ORIGIN ?? 'http://localhost:3000,https://hey-git-main-revisit.vercel.app')
+      .split(',')
+      .map((origin) => origin.trim())
+      .filter(Boolean)
+  );
   app.use(express.json());
-  app.use((_req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_ORIGIN ?? 'http://localhost:3000');
+  app.use((req, res, next) => {
+    const origin = req.get('origin');
+    if (origin && allowedOrigins.has(origin)) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+      res.setHeader('Vary', 'Origin');
+    }
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    if (_req.method === 'OPTIONS') return res.sendStatus(204);
+    if (req.method === 'OPTIONS') return res.sendStatus(204);
     next();
   });
   app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));

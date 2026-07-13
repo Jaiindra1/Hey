@@ -87,6 +87,12 @@ The frontend API client defaults to `http://localhost:3001/api`. To use a differ
 VITE_API_URL=http://localhost:3001/api
 ```
 
+For the deployed API, set `CLIENT_ORIGINS` on Render to a comma-separated list of permitted frontend URLs, for example:
+
+```env
+CLIENT_ORIGINS=http://localhost:3000,https://hey-git-main-revisit.vercel.app
+```
+
 Do not commit API keys or other secrets. The current dashboard does not require a Gemini or Google Maps key to run.
 
 ## API endpoints
