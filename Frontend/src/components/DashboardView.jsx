@@ -14,7 +14,7 @@ export default function DashboardView({ city, searchQuery }) {
           type: "update" }, ...items]);
            setUpdating(false); }, 400);
            }
-  return 
+  return (
   <div className="space-y-6">
     <section className="grid gap-6 lg:grid-cols-3">
       <div className="glass-card rounded-2xl p-6 lg:col-span-1">
@@ -89,11 +89,11 @@ export default function DashboardView({ city, searchQuery }) {
                                                       </div>
                                                       </div>
                                                       </section>
-            </div>;
+            </div>);
 }
 function Metric({ label, value }) { 
-  return 
-  (<div className="rounded-xl bg-surface-container-low p-4">
+  return (
+  <div className="rounded-xl bg-surface-container-low p-4">
     <p className="text-xs text-on-surface-variant">{label}</p>
     <p className="mt-2 flex gap-2 items-center text-lg font-bold">
       <Activity size={16} className="text-secondary"/>{value}</p>

@@ -1,7 +1,7 @@
 import { AlertTriangle } from "lucide-react";
 export default function AlertsView({ city }) {
-     return
-      (<section className="glass-card rounded-2xl p-6">
+     return (
+      <section className="glass-card rounded-2xl p-6">
         <div className="flex gap-3 items-center">
             <AlertTriangle className="text-tertiary"/>
             <div>

@@ -1,7 +1,7 @@
 import { Siren } from "lucide-react";
 export default function EmergencyView({ city }) {
-     return
-     (<section className="rounded-2xl border border-error/25 bg-white p-8 shadow-sm">
+     return (
+     <section className="rounded-2xl border border-error/25 bg-white p-8 shadow-sm">
         <div className="flex gap-4 items-center">
             <div className="rounded-full bg-error/10 p-4 text-error">
             <Siren size={30}/></div>
