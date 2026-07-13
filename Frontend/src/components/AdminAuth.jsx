@@ -12,7 +12,7 @@ export default function AdminAuth({ onBack }) {
     setSubmitted(true);
   }
 
-  return <main className="auth-page">
+  return (<main className="auth-page">
     <button className="auth-back" onClick={onBack}><ArrowLeft size={17} /> Back to command centre</button>
     <section className="auth-layout">
       <div className="auth-intro">
@@ -39,5 +39,5 @@ export default function AdminAuth({ onBack }) {
         <p className="auth-switch">{isSignup ? "Already have access?" : "New to the admin portal?"} <button onClick={() => { setIsSignup(!isSignup); setSubmitted(false); }}>{isSignup ? "Sign in" : "Create an account"}</button></p>
       </div>
     </section>
-  </main>;
+  </main>);
 }

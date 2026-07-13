@@ -89,12 +89,12 @@ export default function DashboardView({ city, searchQuery }) {
                                                       </div>
                                                       </div>
                                                       </section>
-                                                      </div>;
+            </div>;
 }
 function Metric({ label, value }) { 
   return 
-  <div className="rounded-xl bg-surface-container-low p-4">
+  (<div className="rounded-xl bg-surface-container-low p-4">
     <p className="text-xs text-on-surface-variant">{label}</p>
     <p className="mt-2 flex gap-2 items-center text-lg font-bold">
       <Activity size={16} className="text-secondary"/>{value}</p>
-      </div>; }
+      </div>); }
