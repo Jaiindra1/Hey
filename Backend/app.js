@@ -4,7 +4,6 @@ import { pathToFileURL } from 'node:url';
 import { seedDatabase } from './seed.js';
 import { citiesRouter } from './routes/cities.js';
 import { emergencyRouter } from './routes/emergency.js';
-import { authRouter } from './routes/auth.js';
 
 export function createApp() {
   seedDatabase();
