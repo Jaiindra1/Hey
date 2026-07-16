@@ -1,24 +1,12 @@
-import { useEffect, useState } from "react";
-import { Activity, MapPin, RefreshCw } from "lucide-react";
+import { Activity, MapPin } from "lucide-react";
 
-export default function DashboardView({ city, searchQuery }) {
-  const [feed, setFeed] = useState(city.feedItems);
-  const [updating, setUpdating] = useState(false);
-  useEffect(() => setFeed(city.feedItems), [city]);
-  const zones = city.zones.filter(zone => zone.name.toLowerCase().includes(searchQuery.toLowerCase()));
-  function addUpdate() { setUpdating(true); setTimeout(() => {
-     setFeed(items => [{ id: Date.now(),
-       agent: "Control agent",
-        time: "Just now",
-         message: "Adjusted signal timing to maintain a smoother traffic flow.",
-          type: "update" }, ...items]);
-           setUpdating(false); }, 400);
-           }
+export default function DashboardView({ city, user }) {
+  const zones = city.zones;
   return (
   <div className="space-y-6">
     <section className="grid gap-6 lg:grid-cols-3">
       <div className="glass-card rounded-2xl p-6 lg:col-span-1">
-        <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">City flow index</p>
+        <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">City flow index · {user.name}</p>
         <div className="mt-7 flex items-end gap-3">
           <strong className="text-6xl font-serif text-primary">
             {city.flowIndex}%
@@ -36,7 +24,7 @@ export default function DashboardView({ city, searchQuery }) {
               Network snapshot</p>
               <div className="mt-6 grid gap-4 sm:grid-cols-3">
                 <Metric label="Active zones" value={city.zones.length}/>
-                <Metric label="Live agents" value="42"/>
+                <Metric label="Data source" value="API"/>
                 <Metric label="Coordinates" value={`${city.lat} · ${city.lng}`}/>
                 </div>
                 </div></section>
@@ -69,11 +57,8 @@ export default function DashboardView({ city, searchQuery }) {
                                       <div className="glass-card rounded-2xl p-6 lg:col-span-2">
                                         <div className="flex justify-between items-center">
                                           <h3 className="font-bold">Control feed</h3>
-                                          <button onClick={addUpdate} className="rounded-lg p-2 text-primary hover:bg-primary/10 cursor-pointer" title="Add update">
-                                          <RefreshCw size={16} className={updating ? "animate-spin" : ""}/>
-                                          </button>
                                           </div>
-                                          <div className="mt-4 space-y-4">{feed.slice(0,4).map(item => 
+                                          <div className="mt-4 space-y-4">{city.feedItems.slice(0,4).map(item =>
                                             <div key={item.id} className="border-l-2 border-secondary pl-3">
                                               <div className="flex justify-between gap-2 text-xs">
                                                 <strong>{item.agent}
