@@ -10,7 +10,7 @@ export function createApp() {
   seedDatabase();
   const app = express();
   const allowedOrigins = new Set(
-    (process.env.CLIENT_ORIGINS ?? process.env.CLIENT_ORIGIN ?? 'http://localhost:3000,https://hey-git-main-revisit.vercel.app')
+    (process.env.CLIENT_ORIGINS ?? process.env.CLIENT_ORIGIN ?? 'http://localhost:3000,https://hey-pink-nine.vercel.app/')
       .split(',')
       .map((origin) => origin.trim())
       .filter(Boolean)
